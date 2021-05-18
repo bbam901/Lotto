@@ -13,5 +13,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.CardView2).setOnClickListener {
             startActivity(Intent(this, ConstellationActivity::class.java))
         }
+        findViewById<View>(R.id.CardView3).setOnClickListener {
+            startActivity(Intent(this, NameActivity::class.java))
+        }
     }
 }
