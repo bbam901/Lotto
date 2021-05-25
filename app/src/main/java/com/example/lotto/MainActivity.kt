@@ -10,6 +10,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        findViewById<View>(R.id.CardView1).setOnClickListener {
+            startActivity(Intent(this, ResultActivity::class.java))
+        }
         findViewById<View>(R.id.CardView2).setOnClickListener {
             startActivity(Intent(this, ConstellationActivity::class.java))
         }
