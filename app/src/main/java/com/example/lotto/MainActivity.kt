@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val CardView1 = findViewById<CardView>(R.id.CardView1)
         CardView1.setOnClickListener {
             val intent = Intent(this, ResultActivity::class.java)
-            intent.putIntegerArrayListExtra("result", ArrayList(getRandomLottoNumbers()))
+            intent.putIntegerArrayListExtra("result", ArrayList(getShuffledLottoNumbers()))
             startActivity(intent)
         }
         val CardView2 = findViewById<CardView>(R.id.CardView2)
@@ -29,8 +29,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, NameActivity::class.java))
         }
     }
-
-
 
     fun getRandomLottoNumber():Int{
         return Random().nextInt(45)+1
@@ -57,6 +55,15 @@ class MainActivity : AppCompatActivity() {
                 break
         }
         return lottoNumbers
-
     }
+    fun  getShuffledLottoNumbers () : MutableList<Int>{
+        val list = mutableListOf<Int>()
+        for(number in 1..45){
+            list.add(number)
+        }
+        list.shuffle()
+
+        return list.subList(0,6)
+    }
+
 }
