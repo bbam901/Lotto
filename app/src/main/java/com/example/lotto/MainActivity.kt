@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 //        else
             lottoNumbers.add(number)
             if(lottoNumbers.size >= 6)
-                break;
+                break
         }
         return lottoNumbers
 
