@@ -41,8 +41,9 @@ class MainActivity : AppCompatActivity() {
 
         val CardView1 = findViewById<View>(R.id.CardView1)
             CardView1.setOnClickListener {
-            val intent = IntentputIntegerArrayListExtra("result", ArrayList(getRandomLottoNumber()))
-            startActivity(Intent(this, ResultActivity::class.java))
+            val intent = Intent(this, ResultActivity::class.java)
+                intent.putIntegerArrayListExtra("result", ArrayList(getRandomLottoNumber()))
+                startActivity(intent)
         }
         findViewById<View>(R.id.CardView2).setOnClickListener {
             startActivity(Intent(this, ConstellationActivity::class.java))
