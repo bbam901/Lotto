@@ -3,6 +3,9 @@ package com.example.lotto
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -10,14 +13,22 @@ class ResultActivity : AppCompatActivity() {
         setContentView(R.layout.activity_result)
 
         val result = intent.getIntegerArrayListExtra("result") //?: return
+        val strConstellation = intent.getStringExtra("constellation")
 
-        result?.let {
+        val result_sorted = result?.sorted()
+
+        /*result?.let {
             updateLottoBallImages(result.sortedBy { it })
+        }*/
+
+        strConstellation.let {
+            val resulLabel = findViewById<TextView>(R.id.resultLabel)
+            resulLabel.text = "${strConstellation}의 ${SimpleDateFormat("yyyy년 MM월 dd일").format(Date())} 로또번호입니다"
         }
 
         //updateLottoBallImages (result_sorted)
 
-        /*val lottoBallImageStartId = R.drawable.ball_01
+        val lottoBallImageStartId = R.drawable.ball_01
 
             val imageView2 = findViewById<ImageView>(R.id.imageView2)
             val imageView3 = findViewById<ImageView>(R.id.imageView3)
@@ -26,15 +37,15 @@ class ResultActivity : AppCompatActivity() {
             val imageView6 = findViewById<ImageView>(R.id.imageView6)
             val imageView7 = findViewById<ImageView>(R.id.imageView7)
 
-            imageView2.setImageResource(lottoBallImageStartId + result_sorted!![0] - 1)
-            imageView3.setImageResource(lottoBallImageStartId + result_sorted[1] - 1)
-            imageView4.setImageResource(lottoBallImageStartId + result_sorted[2] - 1)
-            imageView5.setImageResource(lottoBallImageStartId + result_sorted[3] - 1)
-            imageView6.setImageResource(lottoBallImageStartId + result_sorted[4] - 1)
-            imageView7.setImageResource(lottoBallImageStartId + result_sorted[5] - 1)*/
+            imageView2.setImageResource(lottoBallImageStartId + result_sorted?.get(0)!! - 1)
+            imageView3.setImageResource(lottoBallImageStartId + result_sorted?.get(1) - 1)
+            imageView4.setImageResource(lottoBallImageStartId + result_sorted?.get(2) - 1)
+            imageView5.setImageResource(lottoBallImageStartId + result_sorted?.get(3) - 1)
+            imageView6.setImageResource(lottoBallImageStartId + result_sorted?.get(4) - 1)
+            imageView7.setImageResource(lottoBallImageStartId + result_sorted?.get(5) - 1)
     }
 
-        private fun updateLottoBallImages(result_sorted : List<Int>) {
+        /*private fun updateLottoBallImages(result_sorted : List<Int>) {
             val lottoBallImagesStartId = R.drawable.ball_01 //146
             //val lottoBallImagestId2 = R.drawable.ball_02
             //val lottoBallImagestId3 = R.drawable.ball_03
@@ -56,5 +67,5 @@ class ResultActivity : AppCompatActivity() {
 
 
 
-        }
+        }*/
 }
